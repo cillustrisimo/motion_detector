@@ -24,7 +24,7 @@ while True:
     if first_frame is None:
         first_frame = gray_frame_gau
 
-    # this essentially begins the vidfo after a change has been detected in the first_frame
+    # this essentially begins the video after a change has been detected in the first_frame
     delta_frame = cv2.absdiff(first_frame, gray_frame_gau)
 
     # this below code essentially checks if a pixel has a value color value above 65,
