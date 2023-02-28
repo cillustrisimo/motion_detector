@@ -1,6 +1,7 @@
 import cv2
 import time
 import glob
+import os
 from emailing import send_email
 
 video = cv2.VideoCapture(0)
@@ -10,6 +11,13 @@ time.sleep(1)
 first_frame = None
 status_list = []
 count = 1
+
+
+def clean_folder():
+    images = glob.glob("images/*.png")
+    for image in images:
+        os.remove(image)
+
 
 # the while loop lets the webcam run infinitely until stopped. the frame variable in video read
 # allows us to look at individual webcam frames (image captures) think frames per second.
@@ -62,7 +70,8 @@ while True:
     status_list = status_list[-2:]
 
     if status_list[0] == 1 and status_list[1] == 0:
-        send_email()
+        send_email(object_image)
+        clean_folder()
     print(status_list)
 
     # waitKey asks the program to display an image until a certain key is pressed
