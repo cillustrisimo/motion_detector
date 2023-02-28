@@ -10,6 +10,7 @@ RECEIVER = "automata.python@gmail.com"
 
 
 def send_email(object_image):
+    print("Send folder function started")
     email_message = EmailMessage()
     email_message["Subject"] = "Motion detected on webcam"
     # noinspection PyTypeChecker
@@ -25,6 +26,7 @@ def send_email(object_image):
     gmail.login(SENDER, PASSWORD)
     gmail.sendmail(SENDER, RECEIVER, email_message.as_string())
     gmail.quit()
+    print("Send folder function ended")
 
 
 if __name__ == "__main__":

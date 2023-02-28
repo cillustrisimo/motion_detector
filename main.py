@@ -3,6 +3,7 @@ import time
 import glob
 import os
 from emailing import send_email
+from threading import Thread
 
 video = cv2.VideoCapture(0)
 # this gives the webcam time to warm up
@@ -14,9 +15,11 @@ count = 1
 
 
 def clean_folder():
+    print("Clean folder function started")
     images = glob.glob("images/*.png")
     for image in images:
         os.remove(image)
+    print("Clean folder function ended")
 
 
 # the while loop lets the webcam run infinitely until stopped. the frame variable in video read
@@ -70,8 +73,14 @@ while True:
     status_list = status_list[-2:]
 
     if status_list[0] == 1 and status_list[1] == 0:
-        send_email(object_image)
-        clean_folder()
+        email_thread = Thread(target=send_email, args=(object_image, ))
+        email_thread.daemon = True
+
+        clean_thread = Thread(target=clean_folder)
+        email_thread.daemon = True
+
+        email_thread.start()
+
     print(status_list)
 
     # waitKey asks the program to display an image until a certain key is pressed
@@ -83,3 +92,5 @@ while True:
         break
 
 video.release()
+
+clean_thread.start()
