@@ -8,7 +8,7 @@ and then "detects" movement and new objects entering the frame by taking in new 
 the color values of the keyframe to black and the new frames to white, 
 grabbing the area of the now white object in the frame, and then comparing it back to the keyframe to outline the new object.
 
-It works like so:
+It functions like so:
 
 ![without](examples/without.PNG)
 
