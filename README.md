@@ -22,4 +22,4 @@ the object triggering it.
 Once the object leaves the frame, an email is sent to my email notifying me my webcam detected motion and containing an 
 attachment that takes a frame from the video showcasing the object.
 
-![caught](examples/caught.PNG)
+![caught](examples/caught.png)
