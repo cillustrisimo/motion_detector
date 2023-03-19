@@ -1,6 +1,6 @@
 # Motion Detector
 
----
+
 This is a simple motion detection program written with the OpenCV library. It's the first of my practice with computer vision.
 
 It works by first creating an initial keyframe,
@@ -21,3 +21,5 @@ the object triggering it.
 
 Once the object leaves the frame, an email is sent to my email notifying me my webcam detected motion and containing an 
 attachment that takes a frame from the video showcasing the object.
+
+![caught](examples/caught.PNG)
